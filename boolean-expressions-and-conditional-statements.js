@@ -28,6 +28,8 @@ const readline = require('readline-sync');
 
 const hasTorch = true;
 const hasMap = false;
+let hasSword = false;
+
 
 console.log("You see two paths: one leads to the mountains, the other to the village.");
 const choice = readline.question("Do you go to the 'mountains' or the 'village'?");
