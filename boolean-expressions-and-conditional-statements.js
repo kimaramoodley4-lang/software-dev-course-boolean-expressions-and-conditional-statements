@@ -28,11 +28,11 @@ const readline = require('readline-sync');
 
 const hasTorch = true;
 const hasMap = false;
-let hasSword = false;
-
+let hasSword = false; 
 
 console.log("You see two paths: one leads to the mountains, the other to the village.");
-const choice = readline.question("Do you go to the 'mountains' or the 'village'?");
+
+const choice = readline.question("Do you go to the 'mountains' or the 'village'? ");
 
 if (choice === "mountains") {
     if (hasTorch) {
@@ -59,7 +59,7 @@ if (choice === "mountains") {
         
         const search = readline.question("The village is quiet. Do you 'search' the shop? ");
         if (search === "search") {
-            hasSword = true; // Picking up the item
+            hasSword = true; 
             console.log("You found a rusty sword! This might be useful later.");
         } else {
             console.log("You decide to keep walking.");
