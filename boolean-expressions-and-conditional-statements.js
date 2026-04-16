@@ -32,14 +32,42 @@ const hasMap = false;
 console.log("You see two paths: one leads to the mountains, the other to the village.");
 const choice = readline.question("Do you go to the 'mountains' or the 'village'?");
 
-if (choice === "mountains" && hasTorch) {
-  console.log("You safely navigate through the dark mountains.");
-} else if (choice === "mountains" && !hasTorch) {
-  console.log("It's too dark to proceed. You decide to turn back.");
-} else if (choice === "village" || hasMap) {
-  console.log("You find your way to the village.");
+if (choice === "mountains") {
+    if (hasTorch) {
+        console.log("You safely navigate through the dark mountains.");
+        
+        // Nested logic: An encounter inside the mountains
+        const encounter = readline.question("A wild beast blocks your path! Do you 'fight' or 'run'? ");
+        
+        if (encounter === "fight" && hasSword) {
+            console.log("You slay the beast with your sword and find a hidden treasure!");
+        } else if (encounter === "fight" && !hasSword) {
+            console.log("You have no weapon! You are forced to retreat.");
+        } else {
+            console.log("You safely run back to the start.");
+        }
+    } else {
+        console.log("It's too dark to proceed. You decide to turn back.");
+    }
+
+} else if (choice === "village") {
+    // Using the OR (||) operator
+    if (hasMap || hasTorch) {
+        console.log("You find your way to the village square.");
+        
+        const search = readline.question("The village is quiet. Do you 'search' the shop? ");
+        if (search === "search") {
+            hasSword = true; // Picking up the item
+            console.log("You found a rusty sword! This might be useful later.");
+        } else {
+            console.log("You decide to keep walking.");
+        }
+    } else {
+        console.log("You get lost and wander aimlessly.");
+    }
+
 } else {
-  console.log("You get lost and wander aimlessly.");
+    console.log("That wasn't an option. Game over.");
 }
 
 /* 
